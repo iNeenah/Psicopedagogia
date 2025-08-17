@@ -594,10 +594,13 @@ const toastStyles = `
     .data-table {
         width: 100%;
         border-collapse: collapse;
-        background: var(--white);
-        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .data-table th,
@@ -627,13 +630,14 @@ const toastStyles = `
     .user-avatar {
         width: 40px;
         height: 40px;
-        background-color: var(--primary-color);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--white);
         font-size: 0.875rem;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
     }
     
     .user-cell div:last-child {
@@ -654,9 +658,21 @@ const toastStyles = `
         text-transform: capitalize;
     }
     
-    .badge.specialty-psicologo { background-color: var(--primary-color); color: var(--white); }
-    .badge.specialty-psicopedagogo { background-color: var(--secondary-color); color: var(--white); }
-    .badge.specialty-ambos { background-color: var(--success-color); color: var(--white); }
+    .badge.specialty-psicologo { 
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); 
+        color: var(--white); 
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    .badge.specialty-psicopedagogo { 
+        background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light)); 
+        color: var(--white); 
+        box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+    }
+    .badge.specialty-ambos { 
+        background: linear-gradient(135deg, var(--success-color), #34d399); 
+        color: var(--white); 
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
     
     .action-buttons {
         display: flex;
@@ -693,16 +709,19 @@ const toastStyles = `
     }
     
     .session-card {
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
         padding: var(--spacing-lg);
         transition: all var(--transition-fast);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     }
     
     .session-card:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-4px);
     }
     
     .session-header {

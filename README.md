@@ -27,8 +27,10 @@ Sistema diseñado para manejar profesionales, pacientes, sesiones terapéuticas 
 - 📈 **Sistema de estadísticas** para profesionales y pacientes
 - 🕐 **Gestión de horarios** y disponibilidad de profesionales
 - 📋 **Historial clínico** completo por paciente
-- 🌐 **Interfaz web moderna** con dashboard interactivo
+- 🌐 **Interfaz web moderna** con dashboard interactivo y efectos glassmorphism
 - 📱 **Diseño responsive** para todos los dispositivos
+- 🎨 **Estética moderna** con gradientes violeta/turquesa y animaciones suaves
+- ✨ **Efectos visuales avanzados** con partículas, blur y transiciones
 
 ## Estructura del Proyecto
 ```
@@ -305,6 +307,46 @@ curl -X POST http://localhost:3000/api/sesiones \
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abrir un Pull Request
 
+## 🌐 Interfaz Web Moderna
+
+La aplicación incluye una **interfaz web de última generación** con:
+
+### 🎨 **Diseño Visual Avanzado**
+- **Glassmorphism**: Efectos de cristal con `backdrop-filter` y transparencias
+- **Gradientes modernos**: Paleta violeta/turquesa con transiciones suaves
+- **Animaciones fluidas**: Efectos de hover, transiciones y partículas animadas
+- **Bordes redondeados**: Diseño orgánico con esquinas suaves (16px-24px)
+
+### ✨ **Efectos Interactivos**
+- **Partículas animadas** en el fondo del login
+- **Efectos ripple** en botones al hacer clic
+- **Hover effects** con elevación y sombras dinámicas
+- **Animaciones escalonadas** para carga de elementos
+
+### 📱 **Experiencia de Usuario**
+- **Responsive design** optimizado para todos los dispositivos
+- **Dashboard interactivo** con estadísticas en tiempo real
+- **Navegación intuitiva** con sidebar glassmorphism
+- **Notificaciones toast** con diseño moderno
+- **Carga rápida** con lazy loading y optimizaciones
+
+### 🔐 **Autenticación Elegante**
+- **Login glassmorphism** con fondo de partículas
+- **Cuentas de demostración** con un solo clic
+- **Validación en tiempo real** con feedback visual
+- **Estados de carga** con spinners animados
+
+## 📸 Capturas de Pantalla
+
+### Login con Efectos de Partículas
+![Login Screen](docs/login-screen.png)
+
+### Dashboard Glassmorphism
+![Dashboard](docs/dashboard.png)
+
+### Gestión de Profesionales
+![Professionals](docs/professionals.png)
+
 ## Licencia
 
-Este proyecto está bajo la Licencia ISC.
+Este proyecto está bajo la Licencia MIT.

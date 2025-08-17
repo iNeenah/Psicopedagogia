@@ -393,18 +393,21 @@ const dashboardStyles = `
     }
 
     .status-badge.programada {
-        background-color: var(--info-color);
+        background: linear-gradient(135deg, var(--info-color), #38bdf8);
         color: var(--white);
+        box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
     }
 
     .status-badge.realizada {
-        background-color: var(--success-color);
+        background: linear-gradient(135deg, var(--success-color), #34d399);
         color: var(--white);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
     }
 
     .status-badge.cancelada {
-        background-color: var(--error-color);
+        background: linear-gradient(135deg, var(--error-color), #f87171);
         color: var(--white);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
     }
 
     .activity-item {
@@ -430,10 +433,22 @@ const dashboardStyles = `
         color: var(--white);
     }
 
-    .activity-icon.success { background-color: var(--success-color); }
-    .activity-icon.info { background-color: var(--info-color); }
-    .activity-icon.primary { background-color: var(--primary-color); }
-    .activity-icon.warning { background-color: var(--warning-color); }
+    .activity-icon.success { 
+        background: linear-gradient(135deg, var(--success-color), #34d399); 
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .activity-icon.info { 
+        background: linear-gradient(135deg, var(--info-color), #38bdf8); 
+        box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    }
+    .activity-icon.primary { 
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); 
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    .activity-icon.warning { 
+        background: linear-gradient(135deg, var(--warning-color), #fbbf24); 
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
 
     .activity-content p {
         font-size: 0.875rem;
