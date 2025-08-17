@@ -27,6 +27,8 @@ Sistema diseñado para manejar profesionales, pacientes, sesiones terapéuticas 
 - 📈 **Sistema de estadísticas** para profesionales y pacientes
 - 🕐 **Gestión de horarios** y disponibilidad de profesionales
 - 📋 **Historial clínico** completo por paciente
+- 🌐 **Interfaz web moderna** con dashboard interactivo
+- 📱 **Diseño responsive** para todos los dispositivos
 
 ## Estructura del Proyecto
 ```
@@ -124,6 +126,16 @@ node check-users.js
 # En PowerShell:
 .\test-api.ps1
 ```
+
+### 7. Acceder a la aplicación
+Una vez que el servidor esté corriendo:
+- **Interfaz Web**: http://localhost:3000
+- **API REST**: http://localhost:3000/api
+
+#### Cuentas de demostración:
+- **Profesional**: `dr.martinez@clinica.com` / `password`
+- **Profesional**: `dra.lopez@clinica.com` / `password`  
+- **Paciente**: `maria.gonzalez@email.com` / `password`
 
 ## Endpoints de la API
 

@@ -126,3 +126,10 @@ reset-*.js
 # Archivos de logs personalizados
 logs/
 *.log.*
+
+# YoYo AI version control directory
+.yoyo/
+
+
+# YoYo AI version control directory
+.yoyo/
