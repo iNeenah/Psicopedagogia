@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsicoClinic - Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Sidebar de navegación -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>PsicoClinic</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="#" class="menu-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="menu-item" data-section="pacientes">
+                <i class="fas fa-users"></i>
+                <span>Pacientes</span>
+            </a>
+            <a href="#" class="menu-item" data-section="profesionales">
+                <i class="fas fa-user-md"></i>
+                <span>Profesionales</span>
+            </a>
+            <a href="#" class="menu-item" data-section="sesiones">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Sesiones</span>
+            </a>
+            <a href="#" class="menu-item" data-section="evaluaciones">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Evaluaciones</span>
+            </a>
+            <a href="#" class="menu-item" data-section="estadisticas">
+                <i class="fas fa-chart-bar"></i>
+                <span>Estadísticas</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name">Dr. Carlos Martínez</span>
+                    <span class="user-role">Psicólogo Clínico</span>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Header superior -->
+        <header class="header">
+            <div class="header-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title" id="pageTitle">Dashboard Principal</h1>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="header-btn notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="header-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40" alt="Usuario" class="user-avatar-small">
+                        <div class="user-dropdown">
+                            <a href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                            <a href="#"><i class="fas fa-cog"></i> Configuración</a>
+                            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área de contenido -->
+        <div class="content" id="content">
+            <!-- Dashboard Principal -->
+            <section class="dashboard-section active" id="dashboard">
+                <!-- Tarjetas de estadísticas -->
+                <div class="stats-grid">
+                    <div class="stat-card patients">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalPacientes">127</h3>
+                            <p>Pacientes Activos</p>
+                            <span class="stat-change positive">+12% este mes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card sessions">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="sesionesHoy">8</h3>
+                            <p>Sesiones Hoy</p>
+                            <span class="stat-change neutral">2 pendientes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card evaluations">
+                        <div class="stat-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="evaluacionesMes">23</h3>
+                            <p>Evaluaciones Mes</p>
+                            <span class="stat-change positive">+8% vs anterior</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card revenue">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="ingresosMes">$45,230</h3>
+                            <p>Ingresos Mes</p>
+                            <span class="stat-change positive">+15% vs anterior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido principal del dashboard -->
+                <div class="dashboard-grid">
+                    <!-- Próximas citas -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> Próximas Citas</h3>
+                            <button class="btn-secondary">Ver todas</button>
+                        </div>
+                        <div class="appointments-list">
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">10:00</span>
+                                    <span class="duration">50 min</span>
+                                </div>
+                                <div class="appointment-info">
+                                    <h4>María González</h4>
+                                    <p>Evaluación psicopedagógica</p>
+                                    <span class="appointment-type evaluation">Evaluación</span>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn-icon" title="Ver detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">14:30</span>
+                                    <span class="duration">50 min</span>
+                                </div>
+                                <div class="appointment-info">
+                                    <h4>Juan Pérez</h4>
+                                    <p>Sesión de seguimiento TDAH</p>
+                                    <span class="appointment-type treatment">Tratamiento</span>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="appointment-item">
+                                <div class="appointment-time">
+                                    <span class="time">16:00</span>
+                                    <span class="duration">50 min</span>
+                                </div>
+                                <div class="appointment-info">
+                                    <h4>Sofía Martínez</h4>
+                                    <p>Primera consulta - Dificultades de aprendizaje</p>
+                                    <span class="appointment-type consultation">Primera Consulta</span>
+                                </div>
+                                <div class="appointment-actions">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actividad reciente -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Actividad Reciente</h3>
+                            <button class="btn-secondary">Ver todo</button>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon evaluation">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Evaluación completada</strong> para María González</p>
+                                    <span class="activity-time">Hace 2 horas</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon session">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Sesión realizada</strong> con Juan Pérez</p>
+                                    <span class="activity-time">Hace 4 horas</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Nueva cita agendada</strong> con Ana López</p>
+                                    <span class="activity-time">Hace 6 horas</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon report">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>Informe generado</strong> para Carlos Ruiz</p>
+                                    <span class="activity-time">Ayer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de resumen -->
+                    <div class="dashboard-card chart-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Resumen Mensual</h3>
+                            <select class="chart-filter">
+                                <option>Últimos 30 días</option>
+                                <option>Últimos 3 meses</option>
+                                <option>Último año</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-area"></i>
+                                <p>Gráfico de sesiones por día</p>
+                                <div class="mock-chart">
+                                    <div class="chart-bar" style="height: 60%"></div>
+                                    <div class="chart-bar" style="height: 80%"></div>
+                                    <div class="chart-bar" style="height: 45%"></div>
+                                    <div class="chart-bar" style="height: 90%"></div>
+                                    <div class="chart-bar" style="height: 70%"></div>
+                                    <div class="chart-bar" style="height: 55%"></div>
+                                    <div class="chart-bar" style="height: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acciones rápidas -->
+                    <div class="dashboard-card quick-actions">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
+                        </div>
+                        <div class="actions-grid">
+                            <button class="action-btn" onclick="showModal('Nueva Cita')">
+                                <i class="fas fa-calendar-plus"></i>
+                                <span>Nueva Cita</span>
+                            </button>
+                            <button class="action-btn" onclick="showModal('Nuevo Paciente')">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Nuevo Paciente</span>
+                            </button>
+                            <button class="action-btn" onclick="showModal('Nueva Evaluación')">
+                                <i class="fas fa-clipboard-check"></i>
+                                <span>Evaluación</span>
+                            </button>
+                            <button class="action-btn" onclick="showModal('Generar Reporte')">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Generar Reporte</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal genérico -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Título del Modal</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <p>Contenido del modal aparecerá aquí...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Variables globales
+        let sidebarCollapsed = false;
+        let isMobile = window.innerWidth <= 768;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+            updateStats();
+            checkResponsive();
+            showWelcomeMessage();
+        });
+
+        // Event listeners
+        function initializeEventListeners() {
+            // Toggle sidebar
+            document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
+            document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileSidebar);
+
+            // Menu navigation
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setActiveMenuItem(this);
+                    const section = this.getAttribute('data-section');
+                    updatePageTitle(section);
+                });
+            });
+
+            // Window resize
+            window.addEventListener('resize', checkResponsive);
+
+            // Close modal on outside click
+            document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        }
+
+        // Funciones del sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebarCollapsed = !sidebarCollapsed;
+            sidebar.classList.toggle('collapsed', sidebarCollapsed);
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mobile-open');
+        }
+
+        // Navegación
+        function setActiveMenuItem(clickedItem) {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            clickedItem.classList.add('active');
+        }
+
+        function updatePageTitle(section) {
+            const titles = {
+                'dashboard': 'Dashboard Principal',
+                'pacientes': 'Gestión de Pacientes',
+                'profesionales': 'Gestión de Profesionales',
+                'sesiones': 'Calendario de Sesiones',
+                'evaluaciones': 'Evaluaciones',
+                'estadisticas': 'Estadísticas y Reportes'
+            };
+            
+            document.getElementById('pageTitle').textContent = titles[section] || 'Dashboard';
+            showToast(`Navegando a ${titles[section]}`, 'info');
+        }
+
+        // Responsive
+        function checkResponsive() {
+            isMobile = window.innerWidth <= 768;
+            const sidebar = document.getElementById('sidebar');
+            
+            if (!isMobile) {
+                sidebar.classList.remove('mobile-open');
+            }
+        }
+
+        // Funciones del modal
+        function showModal(title, content = '') {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalContent').innerHTML = 
+                content || `<p>Funcionalidad de <strong>${title}</strong> en desarrollo.</p>
+                <p>Esta acción abriría el formulario correspondiente para ${title.toLowerCase()}.</p>`;
+            document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Función de logout
+        function logout() {
+            showToast('Cerrando sesión...', 'info');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'info', duration = 3000) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const icons = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            };
+
+            toast.innerHTML = `
+                <i class="${icons[type]}"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+            
+            // Mostrar
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Ocultar
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, duration);
+        }
+
+        // Actualizar estadísticas (simulado)
+        function updateStats() {
+            const stats = {
+                pacientes: Math.floor(Math.random() * 50) + 100,
+                sesionesHoy: Math.floor(Math.random() * 10) + 5,
+                evaluacionesMes: Math.floor(Math.random() * 20) + 15,
+                ingresosMes: `$${(Math.random() * 30000 + 30000).toLocaleString()}`
+            };
+
+            document.getElementById('totalPacientes').textContent = stats.pacientes;
+            document.getElementById('sesionesHoy').textContent = stats.sesionesHoy;
+            document.getElementById('evaluacionesMes').textContent = stats.evaluacionesMes;
+            document.getElementById('ingresosMes').textContent = stats.ingresosMes;
+        }
+
+        // Mensaje de bienvenida
+        function showWelcomeMessage() {
+            setTimeout(() => {
+                showToast('¡Bienvenido al Dashboard de PsicoClinic!', 'success');
+            }, 1000);
+        }
+
+        // Simular carga de datos en tiempo real
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% de probabilidad cada 10 segundos
+                const messages = [
+                    'Nueva cita programada',
+                    'Evaluación completada',
+                    'Recordatorio de sesión',
+                    'Informe generado'
+                ];
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                showToast(message, 'info', 2000);
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
